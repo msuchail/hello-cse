@@ -23,7 +23,7 @@ class ProfileFactory extends Factory
         Storage::put($path, $img);
 
         return [
-            'nom' => $this->faker->name,
+            'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'email' => $this->faker->unique()->safeEmail,
             'statut' => $this->faker->randomElement(['active', 'inactive', 'pending']),

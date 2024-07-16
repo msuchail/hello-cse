@@ -26,7 +26,7 @@
 - ouvrir le projet dans l'IDE
 - Dans le terminal, executer la commande `php composer install`
 - Lancer l'applicaiton dans le terminal avec la commande `./vendor/bin/sail up`
-- Dans un second terminal, lancer les migrations et le seed avec la commande `./vendor/bin/sail artisan migrate --seed`
+- Dans un second terminal, lancer les migrations et le seed avec la commande `./vendor/bin/sail artisan migrate --seed`. <br><strong>Le seed des profils peut prendre un peu de temps, car l'application va télécharger en fond de fausses images de profil via l'API https://thispersondoesnotexist.com/</strong>
 - Installer les dépendances front avec la commande `./vendor/bin/sail npm install`
 - Démarer le serveur vite avec la commande `./vendor/bin/sail npm run dev`
 - Accéder à la partie publique à l'adresse http://localhost
