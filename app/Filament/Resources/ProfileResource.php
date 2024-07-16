@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProfileResource\Pages;
-use App\Filament\Resources\ProfileResource\RelationManagers;
 use App\Models\Profile;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -40,8 +39,13 @@ class ProfileResource extends Resource
                     ->nullable(false),
                 Forms\Components\TextInput::make('prenom')
                     ->nullable(false),
+                Forms\Components\Textarea::make('description')
+                    ->nullable(false)
+                    ->rows(5)
+                    ->columnSpan(2),
                 Forms\Components\FileUpload::make('image')
                     ->image()
+                    ->directory('profiles')
                     ->columnSpan(2),
             ]);
     }

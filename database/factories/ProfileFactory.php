@@ -17,7 +17,11 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nom' => $this->faker->name,
+            'prenom' => $this->faker->firstName,
+            'statut' => $this->faker->randomElement(['active', 'inactive', 'pending']),
+            'description' => $this->faker->text(1000),
+            'image' => 'https://thispersondoesnotexist.com/'
         ];
     }
 }
