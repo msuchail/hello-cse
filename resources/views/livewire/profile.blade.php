@@ -1,11 +1,19 @@
 <div>
     @isset($id)
-        <x-modal :image="$activeProfile->image">
+        <x-global.modal :image="$activeProfile->image">
             <x-slot:title>
                 {{ $activeProfile->prenon . ' ' . $activeProfile->nom }}
             </x-slot:title>
-            {{ $activeProfile->description }}
-        </x-modal>
+            <div class="flex flex-col justify-between h-full">
+                <div>
+                    {{ $activeProfile->description }}
+                </div>
+                <a class="self-end" href="mailto:{{ $activeProfile->email }}">
+                    <x-global.buttons.info wire:click="closeModal" class="w-fit">Envoyer un mail</x-global.buttons.info>
+                </a>
+            </div>
+
+        </x-global.modal>
     @endif
     @if($profiles->count() > 0)
         <ul class="grid grid-cols-4 gap-8">
@@ -24,9 +32,9 @@
             @endforeach
         </ul>
     @else
-        <x-global.alert class="bg-orange-100">
+        <x-global.alerts.alert class="bg-orange-100">
             Il n'y a aucun profil à afficher pour le moment.
-        </x-global.alert>
+        </x-global.alerts.alert>
         <x-svg.no-data class="h-[60vh] m-auto"/>
     @endif
 </div>

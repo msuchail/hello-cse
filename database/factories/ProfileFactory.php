@@ -25,6 +25,7 @@ class ProfileFactory extends Factory
         return [
             'nom' => $this->faker->name,
             'prenom' => $this->faker->firstName,
+            'email' => $this->faker->unique()->safeEmail,
             'statut' => $this->faker->randomElement(['active', 'inactive', 'pending']),
             'description' => $this->faker->text(1000),
             'image' => $path,

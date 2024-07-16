@@ -33,8 +33,10 @@ class ProfileResource extends Resource
                         'inactive' => 'Inactif',
                         'pending' => 'En attente',
                     ])
-                    ->default('pending')
-                    ->columnSpan(2),
+                    ->default('pending'),
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->nullable(false),
                 Forms\Components\TextInput::make('nom')
                     ->nullable(false),
                 Forms\Components\TextInput::make('prenom')
