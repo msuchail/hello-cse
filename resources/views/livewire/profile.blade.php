@@ -15,7 +15,7 @@
                         <x-global.card>
                             <img
                                 class="w-full aspect-video rounded-xl object-cover"
-                                src="{{ $profile->image }}"
+                                src="{{ Storage::url($profile->image) }}"
                                 alt="">
                             <h2 class="mt-3">{{ $profile->prenom . ' ' . $profile->nom }}</h2>
                         </x-global.card>
