@@ -7,8 +7,10 @@
         <header>
             <nav class="bg-slate-100 dark:bg-slate-700">
                 <div class="container m-auto h-16 flex justify-between items-center">
-                    <a href="{{ route('profiles.index') }}" class="h-full">
-                        <img class="h-full" src="{{ \Illuminate\Support\Facades\Storage::disk("public")->url('logo-hcse.png') }}" alt="">
+                    <a href="{{ route('profiles.index') }}" class="h-full text-4xl text-teal-300 flex flex-col items-center">
+                        <div class="m-auto">
+                            Profile Manager
+                        </div>
                     </a>
                     <div class="h-full flex">
                         <label class="inline-flex items-center me-5 cursor-pointer" @cick.once="toggle">

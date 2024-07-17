@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
+    protected static ?string $label = 'Profils';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
