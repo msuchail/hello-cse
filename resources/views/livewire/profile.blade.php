@@ -23,7 +23,7 @@
                         <x-global.card>
                             <img
                                 class="w-full aspect-video rounded-xl object-cover"
-                                src="{{ Storage::url($profile->image) }}"
+                                src="{{ isset($profile->image) ? Storage::url($profile->image) : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRIwd-UFT6cmM0mhCyVVBI4oJN87ZizN1YKQ&s" }}"
                                 alt="">
                             <h2 class="mt-3">{{ $profile->prenom . ' ' . $profile->nom }}</h2>
                         </x-global.card>

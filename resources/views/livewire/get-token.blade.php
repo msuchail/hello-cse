@@ -1,4 +1,4 @@
-<div x-data="token">
+<div>
     @if($modal)
         <x-global.modal>
             <x-slot:title>
@@ -10,7 +10,7 @@
                     <div>
                         <x-global.input type="text" label="Nom du token" name="tokenName" placeholder="Nom du token" class="col-span-8" wire:model.live="tokenName"/>
                         <x-global.input type="date" label="Expiration" name="tokenExpiration" placeholder="Expiration" wire:model.live="tokenExpiration"/>
-                        <x-global.select name="tokenAbilities" label="Autorisations" placeholder="Autorisations" wire:model.live="tokenAbilities" :options="$abilitiesOptions"/>
+                        <x-global.select name="tokenAbilities" label="Autorisations" placeholder="Autorisations" live-model="tokenAbilities" :options="$abilitiesOptions"/>
                     </div>
                     <div class="self-end">
                         <x-global.buttons.info class="w-fit">Créer le token</x-global.buttons.info>
@@ -41,9 +41,6 @@
                                         @endisset
                                     </div>
                                     <div class="flex gap-2">
-                                        <a class="cursor-pointer" x-on:click="copyToken('{{ $token->token }}')">
-                                            <x-heroicon-m-clipboard-document-list class="w-6 text-blue-400"></x-heroicon-m-clipboard-document-list>
-                                        </a>
                                         <a class="cursor-pointer" wire:click="deleteToken({{$token->id}})">
                                             <x-heroicon-c-trash class="w-6 text-red-500"></x-heroicon-c-trash>
                                         </a>
@@ -69,15 +66,12 @@
         </div>
     </x-global.card>
 </div>
-
+@script
 <script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('token', () => ({
-            copyToken(token) {
-                navigator.clipboard.writeText(token)
-                alert('Token copié dans le presse-papier')
-            }
-        }))
+    $wire.on('tokenCreated', (token) => {
+        token = token[0]
+        navigator.clipboard.writeText(token)
+        alert('Token créé avec succès!\n' + token + "\n\nLe token à été copié dans votre presse papier. Il ne sera plus visible après cette alerte.")
     })
 </script>
-
+@endscript

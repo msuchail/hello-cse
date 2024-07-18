@@ -27,7 +27,7 @@ class GetToken extends Component
             'Lecture et écriture'=>'write',
             'Lecture, écriture et suppression'=>'delete',
         ];
-        $this->tokenExpiration = now()->format('Y-m-d');
+        $this->tokenExpiration = now()->addYear()->format('Y-m-d');
     }
     public function mount()
     {
@@ -50,8 +50,9 @@ class GetToken extends Component
         $this->validate([
             'tokenName' => 'required|alpha|string|min:6|max:30',
             'tokenAbilities' => 'required|string',
-            'tokenExpiration' => 'required|date',
+            'tokenExpiration' => 'required|date|after:now',
         ]);
+
         switch ($this->tokenAbilities) {
             case 'read':
                 $tokenAbilities = ['read'];
@@ -64,9 +65,11 @@ class GetToken extends Component
                 break;
         }
 
-        Auth::user()->createToken($this->tokenName, $tokenAbilities, Date::createFromFormat('Y-m-d', $this->tokenExpiration));
+        $token = Auth::user()->createToken($this->tokenName, $tokenAbilities, Date::createFromFormat('Y-m-d', $this->tokenExpiration));
+        $token = $token->plainTextToken;
         $this->tokens = Auth::user()->tokens;
         $this->closeModal();
+        $this->dispatch('tokenCreated', $token);
     }
     public function deleteToken($tokenId) {
         Auth::user()->tokens()->where('id', $tokenId)->delete();
