@@ -46,4 +46,4 @@ On retrouve dans cette application trois parties :
   - `POST /profiles/{id}` : Mise à jour d'un profil
   - `DELETE /profiles/{id}` : Suppression d'un profil
 - Pour accéder aux routes privées, il faut ajouter un header `Authorization` avec la valeur `Bearer <token>` dans le corps requête.
-- Si vous souahaiter utiliser l'API, vous pouvez récupérer directement la collection Postman. Il s'agi du fichier `collection postman.json`, disponible à la racine de l'application.
+- Si vous souahaiter utiliser l'API, vous pouvez récupérer directement la collection Postman. Il s'agi du fichier `collection postman.json`, disponible à la racine de l'application. <strong>Pensez bien à remplacer le token dans les paramètres de la collection!</strong>
