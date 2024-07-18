@@ -18,6 +18,7 @@ On retrouve dans cette application trois parties :
 - `git clone git@github.com:msuchail/hello-cse.git`
 - ouvrir le projet dans l'IDE
 - Installation des dépendances `composer install`
+- Copie du fichier du ficher .env `cp .env.example .env`
 - Lancement des conteneurs `./vendor/bin/sail up -d`
 - Création d'un lien symbolique pour le stockage des images `./vendor/bin/sail artisan storage:link`
 - Création de la clé d'application `./vendor/bin/sail artisan key:generate`
