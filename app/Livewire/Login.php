@@ -46,7 +46,7 @@ class Login extends Component
 
         if (Auth::attempt($validated)) {
             Session::regenerate();
-            return redirect()->intended(route('profiles.index'));
+            $this->redirect(route('profiles.index'));
         }
 
         return back()->withErrors([

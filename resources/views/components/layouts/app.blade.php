@@ -7,7 +7,7 @@
         <header>
             <nav class="bg-slate-100 dark:bg-slate-700">
                 <div class="container m-auto h-16 flex justify-between items-center">
-                    <a href="{{ route('profiles.index') }}" class="h-full text-4xl text-teal-300 flex flex-col items-center">
+                    <a wire:navigate.hover href="{{ route('profiles.index') }}" class="h-full text-4xl text-teal-300 flex flex-col items-center">
                         <div class="m-auto">
                             Profile Manager
                         </div>
@@ -16,17 +16,17 @@
                         @auth()
                             <ul class="flex">
                                 <li>
-                                    <x-navigation-item href="/admin">
+                                    <x-navigation-item wire:navigate.hover href="/admin">
                                         Administration
                                     </x-navigation-item>
                                 </li>
                                 <li>
-                                    <x-navigation-item href="{{ route('get-token') }}">
+                                    <x-navigation-item wire:navigate.hover href="{{ route('get-token') }}">
                                         Token API
                                     </x-navigation-item>
                                 </li>
                                 <li>
-                                    <x-navigation-item href="{{ route('logout') }}">
+                                    <x-navigation-item wire:navigate.hover href="{{ route('logout') }}">
                                         Se déconnecter
                                     </x-navigation-item>
                                 </li>
@@ -34,7 +34,7 @@
                         @else
                             <ul>
                                 <li>
-                                    <x-navigation-item href="{{ route('login') }}">
+                                    <x-navigation-item wire:navigate.hover href="{{ route('login') }}">
                                         Se connecter
                                     </x-navigation-item>
                                 </li>
