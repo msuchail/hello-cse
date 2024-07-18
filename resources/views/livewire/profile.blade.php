@@ -4,18 +4,16 @@
             <x-slot:title>
                 {{ $activeProfile->prenon . ' ' . $activeProfile->nom }}
             </x-slot:title>
-            <div class="flex flex-col justify-between h-full">
-                <div>
-                    {{ $activeProfile->description }}
-                </div>
-                <a class="self-end" href="mailto:{{ $activeProfile->email }}">
-                    <x-global.buttons.info wire:click="closeModal" class="w-fit">Envoyer un mail</x-global.buttons.info>
-                </a>
+            <div>
+                {{ $activeProfile->description }}
             </div>
+            <a class="self-end" href="mailto:{{ $activeProfile->email }}">
+                <x-global.buttons.info class="w-fit">Envoyer un mail</x-global.buttons.info>
+            </a>
         </x-global.modal>
     @endif
     @if($profiles->count() > 0 | strlen($search) > 0)
-        <x-input wire:model.live="search" class="py-1 px-2 dark:bg-slate-900 border dark:border-white rounded w-full rounded-xl mb-5" placeholder="Recherche" name="search"></x-input>
+        <x-global.input wire:model.live="search" class="mb-5" placeholder="Recherche" name="search"></x-global.input>
     @endif
     @if($profiles->count() > 0)
         <ul class="grid grid-cols-4 gap-8">
@@ -37,9 +35,11 @@
             {{ $profiles->links() }}
         </div>
     @else
-        <x-global.alerts.alert class="bg-orange-100">
-            Il n'y a aucun profil à afficher pour le moment.
-        </x-global.alerts.alert>
+        @if(strlen($search) === 0)
+            <x-global.alerts.warning class="bg-orange-100">
+                Il n'y a aucun profil à afficher pour le moment.
+            </x-global.alerts.warning>
+        @endif
         <x-svg.no-data class="h-[60vh] m-auto"/>
     @endif
 </div>

@@ -2,9 +2,6 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Collection;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;

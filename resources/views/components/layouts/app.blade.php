@@ -1,6 +1,6 @@
 <html lang="fr" x-data="layout" :class="darkMode ? 'dark' : ''">
     <head>
-        <title>{{isset($title) ? "HelloCSE - $title" : 'HelloCSE'}}</title>
+        <title>{{isset($title) ? "Profile Manager - $title" : 'Profile Manager'}}</title>
         @vite('resources/css/app.css')
     </head>
     <body class="dark:bg-slate-900 dark:text-gray-100">
@@ -13,23 +13,45 @@
                         </div>
                     </a>
                     <div class="h-full flex">
+                        @auth()
+                            <ul class="flex">
+                                <li>
+                                    <x-navigation-item href="/admin">
+                                        Administration
+                                    </x-navigation-item>
+                                </li>
+                                <li>
+                                    <x-navigation-item href="{{ route('get-token') }}">
+                                        Token API
+                                    </x-navigation-item>
+                                </li>
+                                <li>
+                                    <x-navigation-item href="{{ route('logout') }}">
+                                        Se déconnecter
+                                    </x-navigation-item>
+                                </li>
+                            </ul>
+                        @else
+                            <ul>
+                                <li>
+                                    <x-navigation-item href="{{ route('login') }}">
+                                        Se connecter
+                                    </x-navigation-item>
+                                </li>
+                            </ul>
+                        @endauth
                         <label class="inline-flex items-center me-5 cursor-pointer" @cick.once="toggle">
                             <input type="checkbox" value="" class="sr-only peer" x-model="darkMode">
                             <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 h-full flex flex-col justify-center"><x-heroicon-c-sun class="mr-5 h-1/4 self-center"/></span>
                             <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
                             <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 h-full flex flex-col justify-center"><x-heroicon-c-moon class="ml-2 h-1/4 self-center"/></span>
                         </label>
-                        <a href="/admin" class="h-full px-3 bg-slate-7OO hover:bg-indigo-800 dark:text-white text-black hover:text-white flex flex-col items-center">
-                            <div class="m-auto">
-                                Administration
-                            </div>
-                        </a>
                     </div>
                 </div>
             </nav>
         </header>
         <main class="container m-auto">
-            <h1 class="mt-12 mb-8">{{ $title ?? 'HelloCSE' }}</h1>
+            <h1 class="mt-12 mb-8">{{ $title ?? 'Profile Manager' }}</h1>
             {{ $slot }}
         </main>
     </body>
