@@ -24,6 +24,7 @@ On retrouve dans cette application trois parties :
 - Création de la clé d'application `./vendor/bin/sail artisan key:generate`
 - Seed avec la commande `./vendor/bin/sail artisan migrate --seed`. Le seed des profils peut prendre un peu de temps, car l'application va télécharger en fond de fausses images de profil via l'API https://thispersondoesnotexist.com/
 - Installation des dépendances npm `./vendor/bin/sail npm install`
+- Lancement du serveur vite `./vendor/bin/sail npm run dev`
 - Pour arrêter l'application, executer la commande `./vendor/bin/sail down`
 
 
